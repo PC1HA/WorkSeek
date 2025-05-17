@@ -1,11 +1,12 @@
 import os
-from src.api import get_vacancies_for_company, search_companies_by_name, get_vacancy_details
+
+from src.api import get_companies, get_vacancies_for_company, search_companies_by_name, get_vacancy_details
 from src.DBManager import DBManager
 
 # Настройки подключения к базе данных - замените на свои параметры или используйте переменные окружения.
-DB_NAME = "test"
+DB_NAME = "your_db"
 DB_USER = "postgres"
-DB_PASSWORD = "1234567890HAKERilya"
+DB_PASSWORD = "your_password"
 DB_HOST = "localhost"
 DB_PORT = 5432
 
@@ -19,12 +20,13 @@ def main():
 
     # Выбираем интересные компании по названиям или ID - здесь пример по названиям.
     company_names = [
-        "Google",
-        "Yandex"
+        "2159482",
+        "3215708",
+        "2624085"
     ]
 
     print("Ищу компании...")
-    companies_info = search_companies_by_name(company_names)
+    companies_info = get_companies(company_names)
 
     print("Добавляю работодателей в базу...")
     # Формируем список работодателей для вставки в БД
