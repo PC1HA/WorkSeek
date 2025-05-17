@@ -1,11 +1,11 @@
 import os
-from src.api import get_companies, get_vacancies_for_company, search_companies_by_name, get_vacancy_details
+from src.api import get_vacancies_for_company, search_companies_by_name, get_vacancy_details
 from src.DBManager import DBManager
 
 # Настройки подключения к базе данных - замените на свои параметры или используйте переменные окружения.
-DB_NAME = "your_db"
-DB_USER = "your_user"
-DB_PASSWORD = "your_password"
+DB_NAME = "test"
+DB_USER = "postgres"
+DB_PASSWORD = "1234567890HAKERilya"
 DB_HOST = "localhost"
 DB_PORT = 5432
 
@@ -20,15 +20,7 @@ def main():
     # Выбираем интересные компании по названиям или ID - здесь пример по названиям.
     company_names = [
         "Google",
-        "Yandex",
-        "Microsoft",
-        "Apple",
-        "Amazon",
-        "Facebook",
-        "Tesla",
-        "Samsung",
-        "IBM",
-        "Oracle"
+        "Yandex"
     ]
 
     print("Ищу компании...")
@@ -72,4 +64,9 @@ def main():
     print(f"\nСредняя зарплата по вакансиям: {avg_salary:.2f}" if avg_salary else "\nНет данных о зарплате.")
 
     print("\nВакансии с зарплатой выше средней:")
-    for row in DBManager
+    for row in db_manager.get_vacancies_with_higher_salary():
+        print(row)
+
+
+if __name__ == '__main__':
+    main()
